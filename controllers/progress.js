@@ -7,7 +7,7 @@ module.exports.initProgress = function(req,res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("girlsdata");
+        db = database.db("clientsdata");
         // взаимодействие с базой данных
         db.collection('evas').drop();
         db.collection('darkevas').drop();
@@ -27,7 +27,7 @@ module.exports.getProgress = function(req, res){
         if(err){
             return console.log(err);
         }
-        db = database.db("girlsdata");
+        db = database.db("clientsdata");
         // взаимодействие с базой данных
         db.collection('progress').findOne({ key: "loveProgress"}, function(err,docs){
             if(err){

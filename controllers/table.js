@@ -122,7 +122,7 @@ function saveEvaData(req, res, dbfunction){
             if(err){
                  return console.log(err);
             }
-            db = database.db("girlsdata");
+            db = database.db("clientsdata");
                 dbfunction(db, eva, res);
             });
         } else {
@@ -188,7 +188,7 @@ module.exports.getEvas = function (req, res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("girlsdata");
+        db = database.db("clientsdata");
         // взаимодействие с базой данных
         db.collection('evas').find().toArray(function(err, docs){
             if(err){
