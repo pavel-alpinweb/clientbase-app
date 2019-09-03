@@ -27,17 +27,6 @@ let updateEvaInDB = async (db, eva, res) => {
     }
 }
 
-let setPenaltyInDB = async (db, eva, res) => {
-    try {
-        await db.collection('evas').updateOne({ id: eva.id }, { $set: {penalty: eva.penalty} });
-        let result = await db.collection('evas').find().toArray();
-        res.send(result);
-    } catch (error) {
-        console.log(error);
-        return res.sendStatus(500);
-    }
-}
-
 let archiveEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('evas').deleteOne({ id: eva.id });
@@ -75,22 +64,6 @@ let moveEvaInDB = async (db, eva, res) => {
             if(isFind == -1){
                 await db.collection('progress').update({ key: "loveProgress"}, { $push : { favorites: eva } });
             }
-        }
-        let result = await db.collection('evas').find().toArray();
-        res.send(result);
-    } catch (error) {
-        console.log(error);
-        return res.sendStatus(500);
-    }
-}
-
-let winnEvaInDB = async (db, eva, res) => {
-    try {
-        await db.collection('evas').updateOne({ id: eva.id }, { $set: {status: 'winner'} });
-        let progress = await db.collection('progress').findOne({ key: "loveProgress"});
-        let isFind = await progress.winners.findIndex( element => {return element.id == eva.id});
-        if(isFind == -1){
-            await db.collection('progress').update({ key: "loveProgress"}, { $push : { winners: eva } });
         }
         let result = await db.collection('evas').find().toArray();
         res.send(result);
@@ -168,19 +141,11 @@ module.exports.setEva = function (req, res) {
     saveEvaData(req, res, updateEvaInDB);
 }
 
-module.exports.setPenalty = function (req, res) {
-    saveEvaData(req, res, setPenaltyInDB);
-}
-
 module.exports.archiveEva = function (req, res) {
     saveEvaData(req, res, archiveEvaInDB);
 }
 module.exports.moveEva = function (req, res) {
     saveEvaData(req, res, moveEvaInDB);
-}
-
-module.exports.finishGame = function (req, res) {
-    saveEvaData(req, res, winnEvaInDB);
 }
 
 module.exports.getEvas = function (req, res) {

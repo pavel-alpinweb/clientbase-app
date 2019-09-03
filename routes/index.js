@@ -11,11 +11,9 @@ router.post("/dark-eva", ctrlArchive.setDarkEva);
 router.get("/progress", ctrlProgress.getProgress);
 router.post("/eva", ctrlTable.addEva);
 router.post("/updateEva", ctrlTable.setEva);
-router.post("/penalty", ctrlTable.setPenalty);
 router.post("/archive", ctrlTable.archiveEva);
 router.post("/initProgress", ctrlProgress.initProgress);
 router.post("/move", ctrlTable.moveEva);
 router.post("/moveInDark", ctrlArchive.moveDarkEva);
-router.post("/winner", ctrlTable.finishGame);
 
 module.exports = router;
