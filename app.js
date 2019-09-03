@@ -40,13 +40,13 @@ app.use(function(err, req, res, next) {
 });
 
 
-var mongoClient = new MongoClient("mongodb://localhost:27017/girlsdata", { useNewUrlParser: true });
+var mongoClient = new MongoClient("mongodb+srv://pavel-alpinweb:picK28611@myfirstcluster-3rdem.azure.mongodb.net/clientstdata", { useNewUrlParser: true });
 mongoClient.connect(function(err, database){
     if(err){
         return console.log(err);
     }
     // взаимодействие с базой данных
-    const server = app.listen(process.env.PORT || 3030, function() {
+    const server = app.listen(process.env.PORT || 6060, function() {
       console.log("Сервер запущен на порте: " + server.address().port);
     });
 });
