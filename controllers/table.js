@@ -6,7 +6,7 @@ let saveEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('progress').update({ key: "loveProgress"}, { $inc : { all: 1 } });
         let progress = await db.collection('progress').findOne({ key: "loveProgress"});
-        eva.id = "eva0" + progress.all;
+        eva.id = "client0" + progress.all;
         await db.collection('evas').insert(eva);
         let result = await db.collection('evas').find().toArray();
         res.send(result);
