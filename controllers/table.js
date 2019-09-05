@@ -64,6 +64,11 @@ let moveEvaInDB = async (db, eva, res) => {
             if(isFind == -1){
                 await db.collection('progress').update({ key: "loveProgress"}, { $push : { favorites: eva } });
             }
+        } else if(eva.move == 'winner'){
+            let isFind = await progress.winners.findIndex( element => {return element.id == eva.id});
+            if(isFind == -1){
+                await db.collection('progress').update({ key: "loveProgress"}, { $push : { winners: eva } });
+            }
         }
         let result = await db.collection('evas').find().toArray();
         res.send(result);
