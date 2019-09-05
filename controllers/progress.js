@@ -1,7 +1,7 @@
 const mongoClient = require('../models/index');
 
 module.exports.initProgress = function(req,res) {
-    let progress = {all:0, sleepers: [], mistresses: [], favorites: [], dark_evas: [], winners: [], key: "loveProgress"};
+    let progress = {all:0, sleepers: [], currents: [], favorites: [], dark_evas: [], winners: [], key: "loveProgress"};
 
     mongoClient.connect(function(err, database){
         if(err){

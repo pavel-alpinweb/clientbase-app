@@ -49,10 +49,10 @@ let moveEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('evas').updateOne({ id: eva.id }, { $set: {status: eva.move} });
         let progress = await db.collection('progress').findOne({ key: "loveProgress"});
-        if(eva.move == 'mistress') {
-            let isFind = await progress.mistresses.findIndex( element => {return element.id == eva.id});
+        if(eva.move == 'current') {
+            let isFind = await progress.currents.findIndex( element => {return element.id == eva.id});
             if(isFind == -1){
-                await db.collection('progress').update({ key: "loveProgress"}, { $push : { mistresses: eva } });
+                await db.collection('progress').update({ key: "loveProgress"}, { $push : { currents: eva } });
             }
         } else if(eva.move == 'sleep'){
             let isFind = await progress.sleepers.findIndex( element => {return element.id == eva.id});
