@@ -1,7 +1,7 @@
 const mongoClient = require('../models/index');
 
 module.exports.initProgress = function(req,res) {
-    let progress = {all:0, sleepers: [], currents: [], favorites: [], dark_evas: [], winners: [], key: "loveProgress"};
+    let progress = {all:0, sleepers: [], currents: [], favorites: [], dark_evas: [], winners: [], key: "clientsProgress"};
 
     mongoClient.connect(function(err, database){
         if(err){
@@ -29,7 +29,7 @@ module.exports.getProgress = function(req, res){
         }
         db = database.db("clientsdata");
         // взаимодействие с базой данных
-        db.collection('progress').findOne({ key: "loveProgress"}, function(err,docs){
+        db.collection('progress').findOne({ key: "clientsProgress"}, function(err,docs){
             if(err){
                 return console.log(err);
             }

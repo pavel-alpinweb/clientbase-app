@@ -16,26 +16,26 @@ let updateDarkEvaInDB = async (db, eva, res) => {
 let moveDarkEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('darkevas').deleteOne({ id: eva.id });
-        let progress = await db.collection('progress').findOne({ key: "loveProgress"});
+        let progress = await db.collection('progress').findOne({ key: "clientsProgress"});
         if(eva.move == 'current') {
             let isFind = await progress.currents.findIndex( element => {return element.id == eva.id});
             if(isFind == -1){
-                await db.collection('progress').update({ key: "loveProgress"}, { $push : { currents: eva } });
+                await db.collection('progress').update({ key: "clientsProgress"}, { $push : { currents: eva } });
             }
         } else if(eva.move == 'sleep'){
             let isFind = await progress.sleepers.findIndex( element => {return element.id == eva.id});
             if(isFind == -1){
-                await db.collection('progress').update({ key: "loveProgress"}, { $push : { sleepers: eva } });
+                await db.collection('progress').update({ key: "clientsProgress"}, { $push : { sleepers: eva } });
             }
         } else if(eva.move == 'favorite'){
             let isFind = await progress.favorites.findIndex( element => {return element.id == eva.id});
             if(isFind == -1){
-                await db.collection('progress').update({ key: "loveProgress"}, { $push : { favorites: eva } });
+                await db.collection('progress').update({ key: "clientsProgress"}, { $push : { favorites: eva } });
             }
         } else if(eva.move == 'winner'){
             let isFind = await progress.winners.findIndex( element => {return element.id == eva.id});
             if(isFind == -1){
-                await db.collection('progress').update({ key: "loveProgress"}, { $push : { winners: eva } });
+                await db.collection('progress').update({ key: "clientsProgress"}, { $push : { winners: eva } });
             }
         }
         eva.status = eva.move;
