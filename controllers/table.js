@@ -94,7 +94,7 @@ function saveEvaData(req, res, dbfunction){
     form.on('close', function() {
         if(errors.length == 0) {
             if (uploadFile.filename){
-                eva.image = 'http://localhost:3030/content/' + uploadFile.filename;
+                eva.image = 'http://localhost:6060/content/' + uploadFile.filename;
             }
             mongoClient.connect(function(err, database){
             if(err){
