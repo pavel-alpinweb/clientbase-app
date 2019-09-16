@@ -37,3 +37,17 @@ module.exports.getProgress = function(req, res){
         });
     });
 }
+
+module.exports.getAllEvas = function (req, res) {
+    mongoClient.connect(async function(err, database){
+        if(err){
+            return console.log(err);
+        }
+        db = database.db("clientsdata");
+        // взаимодействие с базой данных
+        const evas = await db.collection('evas').find().toArray();
+        const darkEvas = await db.collection('darkevas').find().toArray();
+        const allEvas = evas.concat(darkEvas);
+        res.send(allEvas);
+    });   
+}

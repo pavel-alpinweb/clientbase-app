@@ -15,5 +15,6 @@ router.post("/archive", ctrlTable.archiveEva);
 router.post("/initProgress", ctrlProgress.initProgress);
 router.post("/move", ctrlTable.moveEva);
 router.post("/moveInDark", ctrlArchive.moveDarkEva);
+router.get("/all-evas", ctrlProgress.getAllEvas);
 
 module.exports = router;
