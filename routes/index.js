@@ -12,9 +12,9 @@ router.get("/progress", ctrlProgress.getProgress);
 router.post("/eva", ctrlTable.addEva);
 router.post("/updateEva", ctrlTable.setEva);
 router.post("/archive", ctrlTable.archiveEva);
-router.post("/initProgress", ctrlProgress.initProgress);
 router.post("/move", ctrlTable.moveEva);
 router.post("/moveInDark", ctrlArchive.moveDarkEva);
 router.get("/all-evas", ctrlProgress.getAllEvas);
+router.delete("/initProgress", ctrlProgress.initProgress);
 
 module.exports = router;
