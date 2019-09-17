@@ -4,8 +4,10 @@ const router = express.Router();
 const ctrlTable = require("../controllers/table");
 const ctrlArchive = require("../controllers/archive");
 const ctrlProgress = require("../controllers/progress");
+const ctrlHistory = require("../controllers/history");
 
 router.get("/evas", ctrlTable.getEvas);
+router.get("/history-evas", ctrlHistory.getPastEvas);
 router.get("/dark-evas", ctrlArchive.getDarkEvas);
 router.post("/dark-eva", ctrlArchive.setDarkEva);
 router.get("/progress", ctrlProgress.getProgress);
