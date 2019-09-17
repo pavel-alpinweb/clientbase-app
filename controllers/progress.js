@@ -12,6 +12,7 @@ module.exports.initProgress = function(req,res) {
         db.collection('evas').drop();
         db.collection('darkevas').drop();
         db.collection('progress').drop();
+        db.collection('history').drop();
         db.collection('progress').insert(progress,function(err, result){
             if(err){
                 console.log(err);

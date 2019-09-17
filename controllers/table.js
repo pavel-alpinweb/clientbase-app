@@ -50,6 +50,7 @@ let archiveEvaInDB = async (db, eva, res) => {
 let moveEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('evas').updateOne({ id: eva.id }, { $set: {status: eva.move} });
+        eva.status = eva.move;
         await db.collection('history').insert(eva);
         let progress = await db.collection('progress').findOne({ key: "clientsProgress"});
         if(eva.move == 'current') {
