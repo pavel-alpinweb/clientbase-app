@@ -41,6 +41,7 @@ let moveDarkEvaInDB = async (db, eva, res) => {
         eva.status = eva.move;
         eva.isActive = true;
         await db.collection('evas').insert(eva);
+        await db.collection('history').insert(eva);
         let result = await db.collection('darkevas').find().toArray();
         res.send(result);
     } catch (error) {
