@@ -7,6 +7,7 @@ let saveEvaInDB = async (db, eva, res) => {
         await db.collection('progress').update({ key: "clientsProgress"}, { $inc : { all: 1 } });
         let progress = await db.collection('progress').findOne({ key: "clientsProgress"});
         eva.id = "client0" + progress.all;
+        await db.collection('history').insert(eva);
         await db.collection('evas').insert(eva);
         let result = await db.collection('evas').find().toArray();
         res.send(result);
@@ -32,6 +33,7 @@ let archiveEvaInDB = async (db, eva, res) => {
         await db.collection('evas').deleteOne({ id: eva.id });
         eva.isActive = false;
         await db.collection('darkevas').insert(eva);
+        await db.collection('history').insert(eva);
         let progress = await db.collection('progress').findOne({ key: "clientsProgress"});
         let isFind = await progress.dark_evas.findIndex( element => {return element.id == eva.id});
         if(isFind == -1){
@@ -48,6 +50,7 @@ let archiveEvaInDB = async (db, eva, res) => {
 let moveEvaInDB = async (db, eva, res) => {
     try {
         await db.collection('evas').updateOne({ id: eva.id }, { $set: {status: eva.move} });
+        await db.collection('history').insert(eva);
         let progress = await db.collection('progress').findOne({ key: "clientsProgress"});
         if(eva.move == 'current') {
             let isFind = await progress.currents.findIndex( element => {return element.id == eva.id});
