@@ -1,4 +1,5 @@
 const mongoClient = require('../models/index');
+const del = require('del');
 
 module.exports.initProgress = function(req,res) {
     let progress = {all:0, sleepers: [], currents: [], favorites: [], dark_evas: [], winners: [], key: "clientsProgress"};
@@ -13,6 +14,7 @@ module.exports.initProgress = function(req,res) {
         db.collection('darkevas').drop();
         db.collection('progress').drop();
         db.collection('history').drop();
+        del.sync('public/content/**');
         db.collection('progress').insert(progress,function(err, result){
             if(err){
                 console.log(err);
