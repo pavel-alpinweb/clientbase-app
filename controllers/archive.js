@@ -73,7 +73,7 @@ function saveEvaData(req, res, dbfunction){
             if(err){
                  return console.log(err);
             }
-            db = database.db("clientsdata");
+            db = database.db("clientsdata2");
                 dbfunction(db, eva, res);
             });
         } else {
@@ -124,7 +124,7 @@ module.exports.getDarkEvas = function (req, res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("clientsdata");
+        db = database.db("clientsdata2");
         // взаимодействие с базой данных
         db.collection('darkevas').find().toArray(function(err, docs){
             if(err){

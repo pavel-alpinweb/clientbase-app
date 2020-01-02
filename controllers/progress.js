@@ -8,7 +8,7 @@ module.exports.initProgress = function(req,res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("clientsdata");
+        db = database.db("clientsdata2");
         // взаимодействие с базой данных
         db.collection('evas').drop();
         db.collection('darkevas').drop();
@@ -30,7 +30,7 @@ module.exports.getProgress = function(req, res){
         if(err){
             return console.log(err);
         }
-        db = database.db("clientsdata");
+        db = database.db("clientsdata2");
         // взаимодействие с базой данных
         db.collection('progress').findOne({ key: "clientsProgress"}, function(err,docs){
             if(err){
@@ -46,7 +46,7 @@ module.exports.getAllEvas = function (req, res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("clientsdata");
+        db = database.db("clientsdata2");
         // взаимодействие с базой данных
         const evas = await db.collection('evas').find().toArray();
         const darkEvas = await db.collection('darkevas').find().toArray();
