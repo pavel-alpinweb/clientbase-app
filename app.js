@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-var mongoClient = new MongoClient("mongodb+srv://pavel-alpinweb:picK28611@myfirstcluster-3rdem.azure.mongodb.net/clientstdata", { useNewUrlParser: true });
+var mongoClient = new MongoClient("mongodb+srv://pavel-alpinweb:picK28611@myfirstcluster-3rdem.azure.mongodb.net/clientstdata2", { useNewUrlParser: true });
 mongoClient.connect(function(err, database){
     if(err){
         return console.log(err);
