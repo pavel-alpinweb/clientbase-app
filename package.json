@@ -4,7 +4,8 @@
   "description": "secret project api",
   "main": "app.js",
   "scripts": {
-    "test": "npm test"
+    "test": "npm test",
+    "start": "node app.js"
   },
   "keywords": [
     "secret",

@@ -6,7 +6,7 @@ module.exports.getPastEvas = function (req, res) {
         if(err){
             return console.log(err);
         }
-        db = database.db("clientsdata2");
+        db = database.db("clientsdata");
         // взаимодействие с базой данных
         db.collection('history').find().toArray(function(err, docs){
             if(err){

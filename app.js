@@ -40,7 +40,7 @@ app.use(function(err, req, res, next) {
 });
 
 
-var mongoClient = new MongoClient("mongodb://localhost:27017/clientstdata2", { useNewUrlParser: true });
+var mongoClient = new MongoClient("mongodb+srv://pavel-alpinweb:picK28611@myfirstcluster-3rdem.azure.mongodb.net/clientsdata", { useNewUrlParser: true });
 mongoClient.connect(function(err, database){
     if(err){
         return console.log(err);
